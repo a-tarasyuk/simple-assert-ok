@@ -6,7 +6,7 @@ describe('SimpleAssertOK', () => {
   });
 
   it('assert(false)', () => {
-    expect(() => assert(false)).toThrow();
+    expect(() => assert(false)).toThrowError('Assertion Failed');
   });
 
   it('assert(false, "custom error message")', () => {

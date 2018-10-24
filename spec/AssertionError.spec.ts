@@ -1,4 +1,4 @@
-import { AssertionError, DEFAULT_ERROR_MESSAGE } from '../src/AssertionError';
+import { AssertionError } from '../src/AssertionError';
 
 describe('AssertionError', () => {
   it('checks AssertionError construction', () => {
@@ -15,11 +15,6 @@ describe('AssertionError', () => {
   it('checks AssertionError message', () => {
     const error = new AssertionError('Error Message!');
     expect(error.message).toEqual('Error Message!');
-  });
-
-  it('checks default error message', () => {
-    const error = new AssertionError();
-    expect(error.message).toEqual(DEFAULT_ERROR_MESSAGE);
   });
 
   it('checks AssertionError stack', () => {

@@ -1,17 +1,18 @@
 {
   "name": "simple-assert-ok",
   "version": "0.1.0",
-  "description": "A lighweight strongly-typed assert helper. Supports ES Modules and CSJ.",
+  "description": "A lightweight strongly-typed assert.ok",
   "author": {
-    "name": "Alexander Tarasyuk",
-    "email": "alexander.v.tarasyuk@gmail.com"
+    "name": "Alexander T.",
+    "email": "alexander.tarasyuk@outlook.com"
   },
   "license": "MIT",
   "keywords": [
     "simpleassert",
-    "simple-assert",
+    "simple-assert-ok",
     "assert",
     "assert-ok",
+    "assert-ok helper",
     "assert helper",
     "assertion"
   ],
@@ -22,12 +23,12 @@
   "module": "dist-es2015/SimpleAssertOK.js",
   "main": "dist-cjs/SimpleAssertOK.js",
   "scripts": {
+    "prepare": "npm run build",
     "clean": "rimraf dist-*",
     "build:types": "tsc -p tsconfig/types.json",
     "build:es2015": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig/cjs.json",
     "build": "run-s clean tslint build:*",
-    "prepare": "npm run build",
     "tslint": "tslint -p tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
     "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json"
   },
