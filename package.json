@@ -1,6 +1,6 @@
 {
   "name": "simple-assert-ok",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A lightweight strongly-typed assert.ok",
   "author": {
     "name": "Alexander T.",
