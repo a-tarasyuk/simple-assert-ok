@@ -28,8 +28,8 @@
     "build:types": "tsc -p tsconfig/types.json",
     "build:es2015": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig/cjs.json",
-    "build": "run-s clean tslint build:*",
-    "tslint": "tslint -p tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
+    "build": "run-s clean lint build:*",
+    "lint": "tslint -p tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
     "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json"
   },
   "repository": {

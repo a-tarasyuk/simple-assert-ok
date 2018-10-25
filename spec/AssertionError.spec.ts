@@ -1,24 +1,35 @@
 import { AssertionError } from '../src/AssertionError';
 
+const ssf = () => {};
+const props = { message: '', expected: true, actual: true, operator: '==', ssf };
+
 describe('AssertionError', () => {
   it('checks AssertionError construction', () => {
-    const error = new AssertionError();
+    const error = new AssertionError(props);
     expect(error instanceof Error).toBeTruthy();
     expect(error instanceof AssertionError).toBeTruthy();
   });
 
-  it('checks AssertionError name', () => {
-    const error = new AssertionError();
+  it('checks AssertionError attributes', () => {
+    const error = new AssertionError(props);
+
     expect(error.name).toEqual('AssertionError');
-  });
-
-  it('checks AssertionError message', () => {
-    const error = new AssertionError('Error Message!');
-    expect(error.message).toEqual('Error Message!');
-  });
-
-  it('checks AssertionError stack', () => {
-    const error = new AssertionError();
     expect(typeof error.stack).toEqual('string');
+    expect(error.operator).toEqual('==');
+    expect(error.expected).toBeTruthy();
+    expect(error.actual).toBeTruthy();
+  });
+
+  it('checks AssertionError default message', () => {
+    const error = new AssertionError(props);
+
+    expect(error.message).toEqual('Assertion Failed');
+    expect(error.generatedMessage).toBeTruthy();
+  });
+
+  it('checks AssertionError custom message', () => {
+    const error = new AssertionError({ ...props, message: 'Error Message!' });
+    expect(error.message).toEqual('Error Message!');
+    expect(error.generatedMessage).toBeFalsy();
   });
 });
