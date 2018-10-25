@@ -5,14 +5,6 @@
 
 const DEFAULT_ERROR_MESSAGE = 'Assertion Failed';
 
-export interface AssertionErrorProps {
-  expected: boolean;
-  actual: boolean;
-  operator: string;
-  message?: string;
-  ssf: Function;
-}
-
 export class AssertionError extends Error {
   public readonly name = 'AssertionError';
   public readonly generatedMessage: boolean;
@@ -20,11 +12,16 @@ export class AssertionError extends Error {
   public readonly expected: boolean;
   public readonly actual: boolean;
 
-  public constructor(props: AssertionErrorProps) {
-    super(props.message);
+  /**
+   * @param {string | undefined} message
+   * @param {boolean} actual
+   * @param {boolean} expected
+   * @param {string} operator
+   * @param {Function} ssf
+   */
+  public constructor(message: string | undefined, actual: boolean, expected: boolean, operator: string, ssf: Function) {
+    super(message);
     Object.setPrototypeOf(this, new.target.prototype);
-
-    const { expected, operator, message, actual, ssf } = props;
 
     this.generatedMessage = !message;
     this.operator = operator;
