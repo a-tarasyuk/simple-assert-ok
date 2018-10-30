@@ -12,7 +12,7 @@ npm install simple-assert-ok --save
 or
 
 ```shell
-yarn add formik
+yarn add simple-assert-ok
 ```
 
 ## Usage
