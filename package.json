@@ -1,6 +1,6 @@
 {
   "name": "simple-assert-ok",
-  "version": "0.1.10",
+  "version": "1.0.0",
   "description": "A lightweight strongly-typed assert.ok",
   "author": {
     "name": "Alexander T.",
@@ -31,7 +31,7 @@
     "build:es2015": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig/cjs.json",
     "build": "run-s clean lint build:*",
-    "lint": "tslint -p tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
+    "lint": "eslint -c .eslintrc src/**/*",
     "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json",
     "size": "size-limit"
   },
@@ -40,16 +40,16 @@
     "url": "git+https://github.com/a-tarasyuk/simple-assert-ok.git"
   },
   "devDependencies": {
-    "@types/jasmine": "3.3.0",
-    "@types/node": "10.12.10",
-    "jasmine": "3.3.0",
+    "@types/jasmine": "3.3.12",
+    "@typescript-eslint/eslint-plugin": "1.7.0",
+    "@typescript-eslint/parser": "1.7.0",
+    "eslint": "5.16.0",
+    "jasmine": "3.4.0",
     "npm-run-all": "4.1.5",
-    "rimraf": "2.6.2",
-    "size-limit": "0.21.0",
-    "ts-node": "7.0.1",
-    "tslint": "5.11.0",
-    "tslint-microsoft-contrib": "5.2.1",
-    "typescript": "3.2.1"
+    "rimraf": "2.6.3",
+    "size-limit": "1.1.2",
+    "ts-node": "8.1.0",
+    "typescript": "3.4.5"
   },
   "types": "dist-types/SimpleAssertOK.d.ts",
   "size-limit": [

@@ -41,7 +41,7 @@ export class AssertionError extends Error {
     }
   }
 
-  private setAdditionalProps(props: Partial<AssertionErrorProps>) {
+  private setAdditionalProps(props: Partial<AssertionErrorProps>): void {
     Object.keys(props).forEach(key => this[key] = props[key]);
   }
 }
