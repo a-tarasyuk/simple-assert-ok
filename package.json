@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "description": "A lightweight strongly-typed assert.ok",
   "author": {
-    "name": "Alexander T.",
-    "email": "alexander.tarasyuk@outlook.com"
+    "name": "Oleksandr T.",
+    "email": "oleksandr.tarasiuk@outlook.com"
   },
   "license": "MIT",
   "keywords": [
@@ -31,6 +31,8 @@
     "build:es2015": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig/cjs.json",
     "build": "run-s clean lint build:*",
+    "format": "prettier --write \"./**/*.{ts,md}\"",
+    "format:check": "prettier --list-different \"./**/*.{ts,md}\"",
     "lint": "eslint -c .eslintrc src/**/*",
     "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json",
     "size": "size-limit"
@@ -40,25 +42,30 @@
     "url": "git+https://github.com/a-tarasyuk/simple-assert-ok.git"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "2.2.2",
-    "@types/jasmine": "3.5.0",
-    "@typescript-eslint/eslint-plugin": "2.11.0",
-    "@typescript-eslint/parser": "2.11.0",
-    "eslint": "6.7.2",
-    "jasmine": "3.5.0",
+    "@size-limit/preset-app": "4.9.0",
+    "@size-limit/webpack": "4.9.0",
+    "@types/jasmine": "3.6.2",
+    "@typescript-eslint/eslint-plugin": "4.8.2",
+    "@typescript-eslint/parser": "4.8.2",
+    "eslint": "7.14.0",
+    "jasmine": "3.6.3",
     "npm-run-all": "4.1.5",
-    "rimraf": "3.0.0",
-    "ts-node": "8.5.4",
-    "typescript": "3.7.3"
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2",
+    "size-limit": "4.9.0",
+    "ts-node": "9.0.0",
+    "typescript": "4.1.2"
   },
   "types": "dist-types/SimpleAssertOK.d.ts",
   "size-limit": [
     {
       "path": "dist-es2015/SimpleAssertOK.js",
+      "import": "{ assert }",
       "limit": "500 B"
     },
     {
       "path": "dist-cjs/SimpleAssertOK.js",
+      "import": "{ assert }",
       "limit": "500 B"
     }
   ]

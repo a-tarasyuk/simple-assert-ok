@@ -9,6 +9,7 @@
 ```shell
 npm install simple-assert-ok --save
 ```
+
 or
 
 ```shell
@@ -19,13 +20,13 @@ yarn add simple-assert-ok
 
 ### assert(expression[, message])
 
-* **@param** _{any}_ expression
-* **@param** _{string}_ message
+- **@param** _{any}_ expression
+- **@param** _{string}_ message
 
 ```typescript
-import assert from 'simple-assert-ok';
-assert(true, 'is valid');
-assert(false, 'is invalid');
+import assert from "simple-assert-ok";
+assert(true, "is valid");
+assert(false, "is invalid");
 ```
 
 ## License and Copyright
