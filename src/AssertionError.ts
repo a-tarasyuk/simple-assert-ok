@@ -1,17 +1,17 @@
 /**
  * AssertionError.ts
- * Author: Alexander T.
+ * Author: Oleksandr T.
  */
 
-const DEFAULT_ERROR_MESSAGE = 'Assertion Failed';
-const NAME = 'AssertionError';
+const DEFAULT_ERROR_MESSAGE = "Assertion Failed";
+const NAME = "AssertionError";
 
 interface AssertionErrorProps {
   message: string;
   actual: boolean;
   expected: boolean;
   operator: string;
-  ssf: Function;
+  ssf?: (expression: any, message?: string | undefined) => void;
 }
 
 export class AssertionError extends Error {
@@ -25,7 +25,13 @@ export class AssertionError extends Error {
   /**
    * @param {AssertionErrorProps} props
    */
-  public constructor({ message, actual, expected, operator, ssf }: Partial<AssertionErrorProps> = {}) {
+  public constructor({
+    message,
+    actual,
+    expected,
+    operator,
+    ssf,
+  }: Partial<AssertionErrorProps> = {}) {
     super(message);
     Object.setPrototypeOf(this, new.target.prototype);
 
@@ -34,14 +40,17 @@ export class AssertionError extends Error {
     this.message = message || DEFAULT_ERROR_MESSAGE;
     this.setAdditionalProps({ actual, expected, operator });
 
-    if (typeof Error.captureStackTrace === 'function') {
+    if (typeof Error.captureStackTrace === "function") {
       Error.captureStackTrace(this, ssf || AssertionError);
     } else {
-      this.stack = (new Error(message)).stack;
+      this.stack = new Error(message).stack;
     }
   }
 
   private setAdditionalProps(props: Partial<AssertionErrorProps>): void {
-    Object.keys(props).forEach(key => this[key] = props[key]);
+    Object.keys(props).forEach((key) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      this[key] = props[key];
+    });
   }
 }
