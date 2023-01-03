@@ -33,7 +33,7 @@
     "build": "run-s clean lint build:*",
     "format": "prettier --write \"./**/*.{ts,md}\"",
     "format:check": "prettier --list-different \"./**/*.{ts,md}\"",
-    "lint": "eslint -c .eslintrc src/**/*",
+    "lint": "eslint -c .eslintrc src/**/* --ext .ts",
     "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json",
     "size": "size-limit"
   },
